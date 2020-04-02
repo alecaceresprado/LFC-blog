@@ -1,8 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import {HomePageContainerComponent} from './components/home-page-container/home-page-container.component';
 
-const routes: Routes = [];
+
+const routes: Routes = [{
+  path: '',
+  children: [
+    {
+      path: '',
+      component: HomePageContainerComponent
+    },
+    {
+      path: '**',
+      redirectTo: ''
+    }
+  ]
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

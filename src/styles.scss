@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./styles/vars";
+body {
+  background-color: $lgc-light-blue;
+  .main {
+    position: fixed;
+    top: 4rem;
+    overflow-y: scroll;
+    // 4rem -> header
+    // 3rem -> footer
+    height: calc(100% - 7rem);
+    width: 100%;
+  }
+}

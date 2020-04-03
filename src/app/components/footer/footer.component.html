@@ -1,0 +1,18 @@
+<div class="footer">
+  <div>
+    <a [href]="images.logo.href" target="_blank" [title]="images.logo.title">
+      <img class="footer__logo" [alt]="images.logo.alt" [src]="images.logo.url">
+    </a>
+  </div>
+  <div class="footer__image-container">
+    <a
+      class="footer__image-link"
+      *ngFor="let link of images.socialMedia"
+      [href]="link.href"
+      target="_blank"
+      [title]="link.title"
+    >
+      <img class="footer__links" [alt]="link.alt" [src]="link.url">
+    </a>
+  </div>
+</div>

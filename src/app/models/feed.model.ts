@@ -1,3 +1,5 @@
+import {CommentModel} from './comment.model';
+
 export interface FeedModel {
   id: number;
   title: string;
@@ -6,14 +8,5 @@ export interface FeedModel {
   slug: string;
   description: string;
   content: Element;
-  comments?: FeedCommentModel[];
-}
-
-export interface FeedCommentModel {
-  id: number;
-  postId: number;
-  parent_id: number;
-  user: string;
-  date: string;
-  content: string;
+  comments?: CommentModel[];
 }

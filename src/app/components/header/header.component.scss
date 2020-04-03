@@ -1,0 +1,13 @@
+.header {
+  background-color: white;
+  height: 2rem;
+  left: 0;
+  padding: 1rem 1.25rem;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 2.5rem);
+
+  &__logo {
+    height: 100%;
+  }
+}

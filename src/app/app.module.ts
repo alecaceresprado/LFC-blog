@@ -3,27 +3,39 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { Store, StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent, HomePageContainerComponent } from './components';
-import {appReducer, AppState, FeedsEffects} from './state';
-import { fetchFeeds } from './state/feeds';
-import { environment } from '../environments/environment';
+import {
+  appReducer,
+  AppState,
+  CommentsEffects,
+  FeedsEffects,
+  fetchFeeds
+} from './state';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PostRowComponent } from './components/post-row/post-row.component';
+import { PostContainerComponent } from './components/post-container/post-container.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    HomePageContainerComponent
+    HomePageContainerComponent,
+    HeaderComponent,
+    FooterComponent,
+    PostRowComponent,
+    PostContainerComponent,
+    PostDetailsComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    EffectsModule.forRoot([FeedsEffects]),
+    EffectsModule.forRoot([CommentsEffects, FeedsEffects]),
     HttpClientModule,
-    [(!environment.production ? StoreDevtoolsModule.instrument() : undefined)],
     StoreModule.forRoot(appReducer)
   ],
   providers: [{

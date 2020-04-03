@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 
+import { AppState, getFeeds } from '../../state';
 import { FeedModel } from '../../models';
-import { AppState } from '../../state';
-import { getFeeds } from '../../state/feeds';
 
 @Component({
   selector: 'app-home-page-container',

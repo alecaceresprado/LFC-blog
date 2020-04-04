@@ -1,13 +1,20 @@
-import {catchError, switchMap, map, filter, take} from 'rxjs/operators';
+import {catchError, switchMap, map, filter, take, tap} from 'rxjs/operators';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {Action, select, Store} from '@ngrx/store';
 
 import { FeedService } from '../../services';
-import {fetchComments, fetchCommentsFailed, fetchCommentsSucceeded} from './comments.actions';
+import {
+  fetchComments,
+  fetchCommentsFailed,
+  fetchCommentsSucceeded,
+  postCommentsFailed,
+  postCommentsSucceeded,
+  postComment} from './comments.actions';
 import { getFeeds } from '../feeds/feeds.selectors';
 import {AppState} from '../app.reducer';
+import {CommentService} from '../../services/comment.service';
 
 @Injectable()
 export class CommentsEffects {
@@ -31,9 +38,23 @@ export class CommentsEffects {
     )
   );
 
+  public postNewComment$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(postComment),
+      switchMap(({postId, parentId, comment}) =>
+        this.comments.postComment({postId, parentId, comment }).pipe(
+          map(payload => postCommentsSucceeded({ comment: payload })),
+          catchError(error => of(postCommentsFailed({ error })))
+        )
+      ),
+      filter(() => false),
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private feeds: FeedService,
+    private comments: CommentService,
     private store: Store<AppState>
   ) {}
 }

@@ -7,3 +7,9 @@ export interface CommentModel {
   content: string;
   comments?: CommentModel[];
 }
+
+export interface PostCommentModel {
+  postId: number;
+  parentId?: number;
+  comment: string;
+};

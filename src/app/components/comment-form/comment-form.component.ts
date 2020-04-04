@@ -1,4 +1,7 @@
 import {Component, Input } from '@angular/core';
+import {Store} from '@ngrx/store';
+
+import {AppState, postComment} from '../../state';
 
 enum ButtonStatus {
   pristine = 'pristine',
@@ -19,17 +22,21 @@ export class CommentFormComponent {
   public validation: string;
   public comment = '';
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   public handleBtnClick(): void {
     if (this.status === ButtonStatus.pristine) {
       this.status = ButtonStatus.typing;
     } else {
-      console.log(this.comment);
       if (!!this.comment) {
-        console.log('post');
+        this.validation = undefined;
+        this.store.dispatch(postComment({
+          postId: this.postId,
+          parentId: this.parentId,
+          comment: this.comment
+        }));
       } else {
-        console.log('validation');
+        this.validation = 'please type some comment to post';
       }
     }
   }

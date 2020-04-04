@@ -1,7 +1,7 @@
 <div class="comment">
   <p class="misc comment__misc">{{comment.user}} - {{commentDate}}</p>
   <p class="text-area comment__content">{{comment.content}}</p>
-  <app-comment-form [postId]="comment.postId" [parentId]="comment.parent_id"></app-comment-form>
+  <app-comment-form [postId]="comment.postId" [parentId]="comment.id"></app-comment-form>
   <div *ngFor="let subComment of comment.comments">
     <app-post-comment [comment]="subComment"></app-post-comment>
   </div>

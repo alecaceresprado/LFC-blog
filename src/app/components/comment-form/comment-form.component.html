@@ -1,10 +1,15 @@
 <div class="form">
   <button class="form__button" (click)="handleBtnClick()">{{buttonText}}</button>
-  <textarea
-    [value]="comment"
-    (change)="handleInputChange($event)"
-    class="text-area form__input"
-    [ngClass]="'form__input--' + status"
-    rows="1"
-  ></textarea>
+  <div
+    class="form__input-container "
+    [ngClass]="'form__input-container--' + status"
+  >
+    <textarea
+      [value]="comment"
+      (change)="handleInputChange($event)"
+      class="text-area form__input"
+      rows="1"
+    ></textarea>
+    <span class="form__input-validation">{{validation}}</span>
+  </div>
 </div>

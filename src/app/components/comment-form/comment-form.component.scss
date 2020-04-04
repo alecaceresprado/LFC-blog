@@ -31,18 +31,24 @@
     }
   }
 
-  &__input {
+  &__input-container {
     margin-right: 2rem;
     width: 80%;
+    display: flex;
+    flex-flow: column;
   }
 
-  &__input--pristine {
+  &__input-container--pristine {
     display: none;
     transform: scaleX(0);
 
   }
 
-  &__input--typing {
+  &__input-container--typing {
     transform: scaleX(1);
+  }
+
+  &__input-validation {
+    color: red;
   }
 }

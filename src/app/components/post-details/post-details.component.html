@@ -1,1 +1,23 @@
-<p>post-details works!</p>
+<div class="post" *ngIf="post">
+  <h1 class="post__title">
+    {{post.title}}
+  </h1>
+  <div class="post__details">
+      <p class="misc">By: {{post.author}}</p>
+      <p class="misc">{{post.publish_date}}</p>
+  </div>
+  <div class="post__body">
+    <h4 class="post__description">TLDR: {{post.description}}</h4>
+    <div class="post__content text-area" [innerHTML]="post.content"></div>
+  </div>
+  <div class="post__actions-container">
+    <div class="post__actions">
+      <app-comment-form [postId]="post.id"></app-comment-form>
+    </div>
+  </div>
+  <div class="comments" *ngIf="post.comments && !!post.comments.length">
+    <div class="comments__comment" *ngFor="let comment of post.comments">
+      <app-post-comment [comment]="comment"></app-post-comment>
+    </div>
+  </div>
+</div>

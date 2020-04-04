@@ -13,7 +13,7 @@ const routes: Routes = [{
       component: HomePageContainerComponent
     },
     {
-      path: 'post/:postId',
+      path: 'post/:postSlug',
       component: PostContainerComponent
     },
     {

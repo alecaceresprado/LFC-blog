@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { FeedModel } from '../../models';
+import {formatDate} from '../../utils';
 
 @Component({
   selector: 'app-post-row',
@@ -12,6 +13,6 @@ export class PostRowComponent {
   @Input() post: FeedModel;
 
   public get postDate(): string {
-    return this.post.publish_date.split('-').reverse().join('/');
+    return formatDate(this.post.publish_date);
   }
 }

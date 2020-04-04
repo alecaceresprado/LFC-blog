@@ -1,6 +1,6 @@
 <ul class="table">
   <li class="row"  *ngFor="let post of feeds">
-    <a [href]="'/post/' + post.id" (mouseenter)="getPostComents(post.id)">
+    <a [routerLink]="'/post/' + post.slug">
       <app-post-row [post]="post"></app-post-row>
     </a>
   </li>

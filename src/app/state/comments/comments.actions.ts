@@ -4,7 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export const fetchComments = createAction(
   '[COMMENTS] Fetch Comments for post',
-    props<{ postId: number }>()
+    props<{ postSlug: string }>()
 );
 
 export const fetchCommentsSucceeded = createAction(

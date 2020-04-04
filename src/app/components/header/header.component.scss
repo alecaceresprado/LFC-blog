@@ -1,11 +1,15 @@
+@import "../../../styles/vars";
+
 .header {
   background-color: white;
+  border-bottom: $border;
   height: 2rem;
   left: 0;
   padding: 1rem 1.25rem;
   position: fixed;
   top: 0;
   width: calc(100% - 2.5rem);
+  z-index: 1;
 
   &__logo {
     height: 100%;

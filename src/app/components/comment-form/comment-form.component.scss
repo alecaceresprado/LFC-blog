@@ -1,0 +1,48 @@
+@import "../../../styles/vars";
+.form {
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+  margin: 1rem;
+  height: 2rem;
+
+  &__button {
+    color: $lgc-dark-blue;
+    border-color: $lgc-dark-blue;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    height: 2rem;
+    user-select: none;
+    background-color: transparent;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: $border-radius;
+
+    transition:
+      color .15s ease-in-out,
+      background-color .15s ease-in-out,
+      border-color .15s ease-in-out;
+
+    &:hover {
+      background-color: $lgc-light-grey;
+      border-color: $lgc-light-grey;
+      color: $lgc-dark-grey;
+    }
+  }
+
+  &__input {
+    margin-right: 2rem;
+    width: 80%;
+  }
+
+  &__input--pristine {
+    display: none;
+    transform: scaleX(0);
+
+  }
+
+  &__input--typing {
+    transform: scaleX(1);
+  }
+}

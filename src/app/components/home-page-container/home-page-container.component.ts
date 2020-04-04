@@ -7,8 +7,7 @@ import { FeedModel } from '../../models';
 
 @Component({
   selector: 'app-home-page-container',
-  templateUrl: './home-page-container.component.html',
-  styleUrls: ['./home-page-container.component.scss']
+  templateUrl: './home-page-container.component.html'
 })
 export class HomePageContainerComponent implements OnInit {
 

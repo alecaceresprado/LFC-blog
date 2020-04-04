@@ -4,12 +4,11 @@ import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
 import {FeedModel} from '../../models';
-import {AppState, getFeedById} from '../../state';
+import {AppState, fetchComments, getFeedBySlug} from '../../state';
 
 @Component({
   selector: 'app-post-container',
-  templateUrl: './post-container.component.html',
-  styleUrls: ['./post-container.component.scss']
+  templateUrl: './post-container.component.html'
 })
 export class PostContainerComponent implements OnInit {
 
@@ -18,8 +17,9 @@ export class PostContainerComponent implements OnInit {
   constructor(private store: Store<AppState>, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const postId = parseInt(this.route.snapshot.params.postId, 10);
-    this.post$ = this.store.pipe(select(getFeedById, { postId }));
+    const postSlug = this.route.snapshot.params.postSlug;
+    this.post$ = this.store.pipe(select(getFeedBySlug, { postSlug }));
+    this.store.dispatch(fetchComments({postSlug}));
   }
 
 }

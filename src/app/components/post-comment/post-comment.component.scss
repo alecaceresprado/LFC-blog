@@ -1,0 +1,10 @@
+@import "../../../styles/vars";
+
+.comment {
+  margin-left: 2rem;
+  border-top: $border;
+
+  &__misc {
+    margin: 1rem 0;
+  }
+}

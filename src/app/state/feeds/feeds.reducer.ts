@@ -15,21 +15,14 @@ const reducer = createReducer(feedsInitialState,
     };
   }),
   on(fetchCommentsSucceeded, (state, {comments, postId}) => {
-    if (!!comments.length) {
       const nestedComments = buildNestedComments(comments);
       const postsWithComments = state.list.map(post =>
         (post.id === postId ? { ...post, comments: nestedComments } : post)
       );
-      console.log({
-        ...state,
-        list: postsWithComments,
-      });
       return {
         ...state,
         list: postsWithComments,
       };
-    }
-    return state;
   })
 );
 
@@ -44,7 +37,6 @@ const sortByDate = (post1: FeedModel, post2: FeedModel): number =>
 // Will assume that backend returns comments ordered by ID, this means that the newest comments will come last
 // Then If a comment is a child of another comment, the parent will come first in the array
 const buildNestedComments = (comments: CommentModel[]): CommentModel[] => {
-  console.log(comments);
   // the Idea is to go from last to first and push each comment into it's parent (not recursive).
   return [...comments]
     // reverse to get comments from last

@@ -17,8 +17,8 @@ export const getFeeds: MemoizedSelector<AppState, FeedModel[]> = createSelector(
   ({ list }) => list
 );
 
-export const getFeedById:
-  MemoizedSelectorWithProps<AppState, {postId: number}, FeedModel> = createSelector(
+export const getFeedBySlug:
+  MemoizedSelectorWithProps<AppState, {postSlug: string}, FeedModel> = createSelector(
    getFeeds,
-  (feeds: FeedModel[], {postId}) => feeds.find(feed => feed.id === postId)
+  (feeds: FeedModel[], {postSlug}) => feeds.find(feed => feed.slug === postSlug)
 );

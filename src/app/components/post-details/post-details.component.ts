@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import {FeedModel} from '../../models';
 
@@ -7,14 +7,10 @@ import {FeedModel} from '../../models';
   templateUrl: './post-details.component.html',
   styleUrls: ['./post-details.component.scss']
 })
-export class PostDetailsComponent implements OnChanges {
+export class PostDetailsComponent {
 
   @Input() public post: FeedModel;
 
   constructor() { }
-
-  ngOnChanges(): void {
-    console.log(this.post && this.post.comments);
-  }
 
 }

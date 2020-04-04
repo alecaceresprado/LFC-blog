@@ -19,6 +19,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PostRowComponent } from './components/post-row/post-row.component';
 import { PostContainerComponent } from './components/post-container/post-container.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { PostCommentComponent } from './components/post-comment/post-comment.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
     FooterComponent,
     PostRowComponent,
     PostContainerComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    PostCommentComponent,
+    CommentFormComponent
   ],
   imports: [
     AppRoutingModule,

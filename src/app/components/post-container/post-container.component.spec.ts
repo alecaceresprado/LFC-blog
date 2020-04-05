@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 import { PostContainerComponent } from './post-container.component';
+import {provideMockStore} from '@ngrx/store/testing';
+import {stateMock} from '../../mocks/mockState';
 
 describe('PostContainerComponent', () => {
   let component: PostContainerComponent;
@@ -8,9 +12,23 @@ describe('PostContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostContainerComponent ]
-    })
-    .compileComponents();
+      imports: [],
+      declarations: [PostContainerComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        provideMockStore({initialState: stateMock}),
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              params: {
+                postSlug: '1'
+              }
+            }
+          }
+        }
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

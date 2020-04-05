@@ -11,7 +11,11 @@ import {
   fetchCommentsSucceeded,
   postCommentsFailed,
   postCommentsSucceeded,
-  postComment} from './comments.actions';
+  postComment,
+  editComment,
+  editCommentsSucceeded,
+  editCommentsFailed
+} from './comments.actions';
 import { getFeeds } from '../feeds/feeds.selectors';
 import {AppState} from '../app.reducer';
 import {CommentService} from '../../services/comment.service';
@@ -47,7 +51,18 @@ export class CommentsEffects {
           catchError(error => of(postCommentsFailed({ error })))
         )
       ),
-      filter(() => false),
+    )
+  );
+
+  public editExistingComment$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(editComment),
+      switchMap(({postId, parentId, comment, commentId}) =>
+        this.comments.putComment({postId, parentId, comment, commentId }).pipe(
+          map(payload => editCommentsSucceeded({ comment: payload })),
+          catchError(error => of(editCommentsFailed({ error })))
+        )
+      ),
     )
   );
 

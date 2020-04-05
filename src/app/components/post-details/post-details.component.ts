@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import {FeedModel} from '../../models';
+import {CommentModel, FeedModel} from '../../models';
 
 @Component({
   selector: 'app-post-details',
@@ -10,6 +10,7 @@ import {FeedModel} from '../../models';
 export class PostDetailsComponent {
 
   @Input() public post: FeedModel;
+  @Input() public comments: CommentModel[];
 
   constructor() { }
 

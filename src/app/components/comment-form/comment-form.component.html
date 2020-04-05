@@ -1,8 +1,9 @@
 <div class="form">
-  <button class="form__button" (click)="handleBtnClick()">{{buttonText}}</button>
+  <button class="form__button" (click)="handleSubmitClick()">{{submitText}}</button>
+  <button *ngIf="canEdit" class="form__button" (click)="handleEditClick()">{{editText}}</button>
   <div
     class="form__input-container "
-    [ngClass]="'form__input-container--' + status"
+    [ngClass]="'form__input-container--' + formStatus"
   >
     <textarea
       [value]="comment"

@@ -7,6 +7,6 @@ export interface FeedModel {
   publish_date: string;
   slug: string;
   description: string;
-  content: Element;
+  content: string;
   comments?: CommentModel[];
 }

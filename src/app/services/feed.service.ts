@@ -15,6 +15,7 @@ export class FeedService {
     return this.http.get<FeedModel[]>(`${basePath}/posts`);
   }
 
+
   public getCommentsForPost(postId: number): Observable<CommentModel[]> {
     return this.http.get<CommentModel[]>(`${basePath}/posts/${postId}/comments`);
   }

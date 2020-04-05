@@ -1,16 +1,28 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import {platformBrowserTesting} from '@angular/platform-browser/testing';
+import {provideMockActions} from '@ngrx/effects/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {provideMockStore} from '@ngrx/store/testing';
+
 import { AppComponent } from './app.component';
+import {stateMock} from './mocks/mockState';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
       ],
       declarations: [
         AppComponent
       ],
+      providers: [
+        platformBrowserTesting,
+        provideMockActions({} as any),
+        HttpClientTestingModule,
+        provideMockStore({initialState: stateMock})
+      ]
     }).compileComponents();
   }));
 
@@ -18,18 +30,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'LGC-blog'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('LGC-blog');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('LGC-blog app is running!');
   });
 });

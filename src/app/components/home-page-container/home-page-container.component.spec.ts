@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {provideMockStore} from '@ngrx/store/testing';
 
 import { HomePageContainerComponent } from './home-page-container.component';
+import {stateMock} from '../../mocks/mockState';
 
 describe('HomePageContainerComponent', () => {
   let component: HomePageContainerComponent;
@@ -8,7 +10,8 @@ describe('HomePageContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePageContainerComponent ]
+      declarations: [ HomePageContainerComponent ],
+      providers: [provideMockStore({initialState: stateMock})]
     })
     .compileComponents();
   }));

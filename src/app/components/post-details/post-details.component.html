@@ -15,8 +15,8 @@
       <app-comment-form [postId]="post.id"></app-comment-form>
     </div>
   </div>
-  <div class="comments" *ngIf="post.comments && !!post.comments.length">
-    <div class="comments__comment" *ngFor="let comment of post.comments">
+  <div class="comments" *ngIf="comments && !!comments.length">
+    <div class="comments__comment" *ngFor="let comment of comments">
       <app-post-comment [comment]="comment"></app-post-comment>
     </div>
   </div>

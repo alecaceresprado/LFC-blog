@@ -1,3 +1,6 @@
 <div class="main">
-  <app-post-details [post]="post$ | async"></app-post-details>
+  <app-post-details
+    [post]="post$ | async"
+    [comments]="comments$ | async"
+  ></app-post-details>
 </div>
